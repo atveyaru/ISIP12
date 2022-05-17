@@ -1,0 +1,112 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="CSS/style.css">
+	</head>
+	<body>
+		<table border="0" cellspacing="0" cellpadding="0" class="glTable" align="center">
+			<tr>
+				<td class="glTD_1">
+					<div align="right">Привет <a href="index.html" target="_blank">гость</a></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="glTD_2">
+					<div class="img_div"> &nbsp; </div>
+				</td>
+			</tr>
+			<tr>
+				<td class="glTD_3">
+		<table border="0" cellspacing="0" cellpadding="0" style="width: 100%; height: 100%;">
+			<tr>
+				<td>
+					<div class="divCont">
+					Всем ку, это Меню.
+		</div>
+				</td>
+				<td style="width: 350px;" valign="top">
+					<div class="div_href_1"><a href="Heroes.html">Герои меча и магии</a></div>
+					<div class="div_href_1"><a href="Warcraft.html">Warcraft 3</a></div>
+					<div class="div_href_1"><a href="Gothic.html">Gothic</a></div>
+					<div class="div_href_1"><a href="Linage%202.html">Lineage 2</a></div>
+					<div id="sudaMES" class="Month" align="center"></div>
+					<div id="suda">
+					</div>
+					<div style="width: 368px; border:1px solid red;" align="right">
+						<div class="clockDiv">
+							<div class="clckElem clckHH" id="divHH">12</div>
+							<div class="clckElem clckD1" id="divDt">:</div>
+							<div class="clckElem clckMI" id="divMI">45</div>
+							<div class="clckElem clckSS" id="divSS">34</div>
+						</div>
+					</div>
+
+					<script>
+						var months = [
+							'январь', 'Февраль', 'Март',
+							'Апрель', 'Май', 'Июнь',
+							'Июль', 'Август', 'Сентябрь',
+							'Октябрь', 'Ноябрь', 'Декабрь',
+						]
+						function lostDay(y, m) {
+							var lostDarte = new Date(y,m+1,0)
+							return lostDarte.getDate();
+						}
+						function f_null_cldr(y, m) {
+							var nullDate = new Date(y,m,1)
+							var p = nullDate.getDay()
+							for(i=1;i<=p - 1;i++) {
+								var dddd = document.createElement("div")
+								dddd.innerHTML = " "
+								dddd.className = "dayCLDR_null"
+								suda.append(dddd)
+							}
+						}
+						function f_cldr() {
+							var curDate = new Date();
+							sudaMES.innerHTML = months[curDate.getMonth()] + ' ' + curDate.getFullYear(),
+							f_null_cldr(curDate.getFullYear(), curDate.getMonth())
+							var endDay = lostDay(curDate.getFullYear(), curDate.getMonth())
+							for(i=1;i<=endDay;i++) {
+								var loopDate = new Date();
+								loopDate.setDate(i);
+								var ffff = document.createElement("div")
+								ffff.innerHTML = i
+								ffff.className = "dayCLDR"
+								if (i == curDate.getDate()) ffff.className = "currCLDR"
+								if (loopDate.getDay() == 6) ffff.className = "hppCLDR"
+								if (loopDate.getDay() == 0) ffff.className = "hppCLDR"
+								suda.append(ffff)
+							}
+						}
+						f_cldr()
+						var interval = setInterval(f_clock, 1000);
+                                    function f_clock() {
+                                        var clockDate = new Date();
+                                        var divHHstr = clockDate.getHours().toString()
+                                        var divMIstr = '' + clockDate.getMinutes()
+                                        var divSSstr = '' + clockDate.getSeconds().toString() 
+                                        divHH.innerHTML = (divHHstr.length < 2)?'0' + divHHstr:divHHstr;
+                                        divMI.innerHTML = (divMIstr.length < 2)?'0' + divMIstr:divMIstr;
+                                        divSS.innerHTML = (divSSstr.length < 2)?'0' + divSSstr:divSSstr;
+                                        if (divDt.className == "clckElem clckD1") {
+                                            divDt.className = "clckElem clckD2" 
+                                        } else {
+                                            divDt.className = "clckElem clckD1"
+                                        }
+                                    }
+					</script>
+				</td>
+			</tr>
+		</table>
+				</td>
+			</tr>
+			<tr>
+				<td class="glTD_4">
+					<div align="center"><a href="Heroes.html" target="_blank">&copy; ТСПК</a></div>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
